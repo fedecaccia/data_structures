@@ -172,7 +172,7 @@ class BinaryTree(object):
         q.enqueue(node)
         l.enqueue(1)
 
-        higher_level = 1
+        higher_level = 1 # or 0 if last level has level 0
 
         while len(q)>0:
 
@@ -195,7 +195,7 @@ class BinaryTree(object):
     def height_recursive(self, node):
 
         if node is None:
-            return 0
+            return 0 # or -1 if last level has level 0
 
         left = self.height_recursive(node.left)
         right = self.height_recursive(node.right)
@@ -205,3 +205,36 @@ class BinaryTree(object):
         else:
             h = 1 + right
         return h
+
+    def size(self):
+        """ Calculate number of nodes in the tree"""
+
+        size = 0
+        if self.root is None:
+            return size
+
+        q = Queue()
+        q.enqueue(self.root)
+
+        while len(q) > 0:
+
+            n = q.dequeue()
+            size += 1
+
+            if n.left:
+                q.enqueue(n.left)
+
+            if n.right:
+                q.enqueue(n.right)
+
+        return size
+
+    def size_recursive(self, node):
+        """ Calculate number of nodes in the subtree"""
+
+        if node is None:
+            return 0
+
+        return 1 + self.size_recursive(node.left) + self.size_recursive(node.right)
+
+        

@@ -124,3 +124,11 @@ def test_node_height_recursive(tree, another_tree):
     assert(another_tree.height_recursive(another_tree.root.left.right) == 2)
 
 
+def test_size(tree, another_tree):
+    assert(tree.size() == 8)
+    assert(another_tree.size() == 9)
+
+def test_size_recursive(tree, another_tree):
+    assert(tree.size_recursive(tree.root) == 8)
+    assert(another_tree.size_recursive(another_tree.root) == 9)
+
