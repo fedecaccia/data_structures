@@ -103,4 +103,24 @@ def test_levelorder_traversal(tree, another_tree):
     assert(tree.print_tree("levelorder") == "1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - ")
     assert(another_tree.print_tree("levelorder") == "1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - ")
 
+def test_reverse_levelorder_traversal(tree, another_tree):    
+    assert(tree.print_tree("reverse levelorder") == "8 - 4 - 5 - 6 - 7 - 2 - 3 - 1 - ")
+    assert(another_tree.print_tree("reverse levelorder") == "7 - 8 - 9 - 4 - 5 - 6 - 2 - 3 - 1 - ")
+
+def test_root_height(tree, another_tree):    
+    assert(tree.height(tree.root) == 4)
+    assert(another_tree.height(another_tree.root) == 4)
+
+def test_node_height(tree, another_tree):    
+    assert(tree.height(tree.root) == 4)
+    assert(tree.height(tree.root.right) == 3)
+    assert(another_tree.height(another_tree.root.left.left) == 1)
+    assert(another_tree.height(another_tree.root.left.right) == 2)
+
+def test_node_height_recursive(tree, another_tree):    
+    assert(tree.height_recursive(tree.root) == 4)
+    assert(tree.height_recursive(tree.root.right) == 3)
+    assert(another_tree.height_recursive(another_tree.root.left.left) == 1)
+    assert(another_tree.height_recursive(another_tree.root.left.right) == 2)
+
 

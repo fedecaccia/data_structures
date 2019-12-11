@@ -122,17 +122,17 @@ class BinaryTree(object):
 
     def levelorder_print(self, start, traversal):
 
-        q = Queue()        
+        q = Queue()
         q.enqueue(start)
 
         while len(q)>0:
 
             start = q.dequeue()
 
-            if start.left is not None:
+            if start.left:
                 q.enqueue(start.left)
             
-            if start.right is not None:
+            if start.right:
                 q.enqueue(start.right)
 
             traversal += str(start.value) + " - "           
@@ -141,6 +141,67 @@ class BinaryTree(object):
 
     def reverse_levelorder_print(self, start, traversal):
 
+        q = Queue()
+        q.enqueue(start)
+        s = Stack()
+
+        while len(q) > 0:
+
+            n = q.dequeue()
+            s.push(n)
+
+            if n.right:
+                q.enqueue(n.right)
+
+            if n.left:
+                q.enqueue(n.left)
+
+        while not s.is_empty():
+            traversal += str(s.pop().value) + " - "
+
         return traversal
 
-    
+    def height(self, node):
+
+        if node is None:
+            return 1
+
+        q = Queue()
+        l = Queue()
+        
+        q.enqueue(node)
+        l.enqueue(1)
+
+        higher_level = 1
+
+        while len(q)>0:
+
+            node = q.dequeue()
+            level = l.dequeue()
+            
+            if(level>higher_level):
+                higher_level = level
+            
+            if node.left:
+                q.enqueue(node.left)
+                l.enqueue(level+1)
+            
+            if node.right:
+                q.enqueue(node.right)
+                l.enqueue(level+1)
+
+        return higher_level
+
+    def height_recursive(self, node):
+
+        if node is None:
+            return 0
+
+        left = self.height_recursive(node.left)
+        right = self.height_recursive(node.right)
+
+        if left > right:
+            h = 1 + left
+        else:
+            h = 1 + right
+        return h
