@@ -87,16 +87,20 @@ def another_tree():
     return t
 
 
-def test_preorder_search(tree, another_tree):    
+def test_preorder_traversal(tree, another_tree):    
     assert(tree.print_tree("preorder") == "1 - 2 - 4 - 5 - 3 - 6 - 7 - 8 - ")
     assert(another_tree.print_tree("preorder") == "1 - 2 - 4 - 5 - 7 - 8 - 3 - 6 - 9 - ")
 
-def test_inorder_search(tree, another_tree):    
+def test_inorder_traversal(tree, another_tree):    
     assert(tree.print_tree("inorder") == "4 - 2 - 5 - 1 - 6 - 3 - 7 - 8 - ")
     assert(another_tree.print_tree("inorder") == "4 - 2 - 7 - 5 - 8 - 1 - 3 - 9 - 6 - ")
 
-def test_postorder_search(tree, another_tree):    
+def test_postorder_traversal(tree, another_tree):    
     assert(tree.print_tree("postorder") == "4 - 5 - 2 - 6 - 8 - 7 - 3 - 1 - ")
     assert(another_tree.print_tree("postorder") == "4 - 7 - 8 - 5 - 2 - 9 - 6 - 3 - 1 - ")
+
+def test_levelorder_traversal(tree, another_tree):    
+    assert(tree.print_tree("levelorder") == "1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - ")
+    assert(another_tree.print_tree("levelorder") == "1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - ")
 
 

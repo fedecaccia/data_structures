@@ -122,6 +122,21 @@ class BinaryTree(object):
 
     def levelorder_print(self, start, traversal):
 
+        q = Queue()        
+        q.enqueue(start)
+
+        while len(q)>0:
+
+            start = q.dequeue()
+
+            if start.left is not None:
+                q.enqueue(start.left)
+            
+            if start.right is not None:
+                q.enqueue(start.right)
+
+            traversal += str(start.value) + " - "           
+
         return traversal
 
     def reverse_levelorder_print(self, start, traversal):
