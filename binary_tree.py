@@ -64,8 +64,8 @@ class Queue(object): # FIFO
 
 class BinaryTree(object):
 
-    def __init__(self, root):
-        self.root = Node(root)
+    def __init__(self, root_value):
+        self.root = Node(root_value)
 
     def print_tree(self, traversal_type):
         
@@ -122,6 +122,9 @@ class BinaryTree(object):
 
     def levelorder_print(self, start, traversal):
 
+        if start is None:
+            return ""
+
         q = Queue()
         q.enqueue(start)
 
@@ -140,6 +143,9 @@ class BinaryTree(object):
         return traversal
 
     def reverse_levelorder_print(self, start, traversal):
+
+        if start is None:
+            return ""
 
         q = Queue()
         q.enqueue(start)
